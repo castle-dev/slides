@@ -36,6 +36,12 @@
   </style>
   <!-- AngularJS -->
   <script src="../node_modules/angular/lib/angular.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
+
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
 </head>
 <body ng-app="slides">
   <div id="slides" ng-controller="MainCtrl">
@@ -84,14 +90,19 @@
     });
 
     //Declare the angular module
-    var app = angular.module('slides', []);
+    var app = angular.module('slides', ["firebase"]);
 
     app.config(function($locationProvider) {
       $locationProvider.html5Mode(true);
     });
 
-    app.controller('MainCtrl', function($scope, $location) {
+    app.controller('MainCtrl', function($scope, $location, $firebase) {
+      var ref = new Firebase('https://radiant-fire-5789.firebaseio.com/');
+      var syncedSlidesIndex = $firebase(ref).$asObject();
       var slideCount = $('#slides').superslides('size');
+
+      // Setup 3 way data binding between Firebase and angular
+      syncedSlidesIndex.$bindTo($scope, "data");
 
       $scope.presenterMode = $location.search().presenter;
 
