@@ -85,8 +85,14 @@
     //Declare the angular module
     var app = angular.module('slides', []);
 
-    app.controller('MainCtrl', function($scope) {
+    app.config(function($locationProvider) {
+      $locationProvider.html5Mode(true);
+    });
+
+    app.controller('MainCtrl', function($scope, $location) {
       var slideCount = $('#slides').superslides('size');
+
+      console.log($location.search());
 
       $scope.currentSlide = 3; //TODO: Pull this from Fire
 
