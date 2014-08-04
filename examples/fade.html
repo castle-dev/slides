@@ -4,6 +4,19 @@
   <meta charset="utf-8">
   <title>Superslides - A fullscreen slider for jQuery</title>
   <link rel="stylesheet" href="../dist/stylesheets/superslides.css">
+  <style>
+    .slides-navigation a {
+      width: 100px;
+      position: fixed !important;
+      top: 0;
+      bottom: 0;
+      color: transparent;
+    } .slides-navigation a.prev {
+      left: 0;
+    } .slides-navigation a.next {
+      right: 0;
+    }
+  </style>
 </head>
 <body>
   <div id="slides">
@@ -49,23 +62,5 @@
       animation: 'fade'
     });
   </script>
-  <style>
-    .prev {
-      width: 100px;
-      position: fixed !important;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      color: transparent;
-    }
-    .next {
-      width: 100px;
-      position: fixed !important;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      color: transparent;
-    }
-  </style>
 </body>
 </html>
