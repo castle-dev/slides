@@ -97,16 +97,19 @@
     });
 
     app.controller('MainCtrl', function($scope, $location, $firebase) {
+      $scope.presenterMode = $location.search().presenter;
+      $scope.currentSlide = 3; //TODO: Pull this from Firebase
+
       var ref = new Firebase('https://radiant-fire-5789.firebaseio.com/');
       var syncedSlidesIndex = $firebase(ref).$asObject();
       var slideCount = $('#slides').superslides('size');
 
       // Setup 3 way data binding between Firebase and angular
-      syncedSlidesIndex.$bindTo($scope, "data");
-
-      $scope.presenterMode = $location.search().presenter;
-
-      $scope.currentSlide = 3; //TODO: Pull this from Firebase
+      syncedSlidesIndex.$bindTo($scope, "data").then(function() {
+        syncedSlidesIndex.$watch(function() {
+          console.log("current slide is: " + $scope.data.slide);
+        });
+      });
 
       //set the currentSlide
       if($scope.currentSlide > 0 && $scope.currentSlide < slideCount){
