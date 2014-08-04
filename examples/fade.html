@@ -98,23 +98,26 @@
 
     app.controller('MainCtrl', function($scope, $location, $firebase) {
       $scope.presenterMode = $location.search().presenter;
-      $scope.currentSlide = 3; //TODO: Pull this from Firebase
 
       var ref = new Firebase('https://radiant-fire-5789.firebaseio.com/');
       var syncedSlidesIndex = $firebase(ref).$asObject();
       var slideCount = $('#slides').superslides('size');
+      var gotoSlide = function(slide) {
+        if(slide >= 0 && slide < slideCount){
+          $('#slides').superslides('animate', slide);
+        }
+      }
 
       // Setup 3 way data binding between Firebase and angular
-      syncedSlidesIndex.$bindTo($scope, "data").then(function() {
-        syncedSlidesIndex.$watch(function() {
-          console.log("current slide is: " + $scope.data.slide);
-        });
+      syncedSlidesIndex.$bindTo($scope, "data");
+
+      syncedSlidesIndex.$watch(function() {
+        if($scope.data) {
+          gotoSlide($scope.data.slide);
+        }
       });
 
-      //set the currentSlide
-      if($scope.currentSlide > 0 && $scope.currentSlide < slideCount){
-        $('#slides').superslides('animate', $scope.currentSlide);
-      }
+
     });
   </script>
 </body>
