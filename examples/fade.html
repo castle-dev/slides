@@ -37,8 +37,8 @@
   <!-- AngularJS -->
   <script src="../node_modules/angular/lib/angular.min.js"></script>
 </head>
-<body>
-  <div id="slides">
+<body ng-app="slides">
+  <div id="slides" ng-controller="MainCtrl">
     <ul class="slides-container">
       <li>
         <img src="images/people.jpeg" alt="Cinelli">
@@ -77,8 +77,16 @@
   <script src="javascripts/jquery.animate-enhanced.min.js"></script>
   <script src="../dist/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
   <script>
+    //Activate the superslides plugin
     $('#slides').superslides({
       animation: 'fade'
+    });
+
+    //Declare the angular module
+    var app = angular.module('slides', []);
+
+    app.controller('MainCtrl', function() {
+      alert("Angular is working.");
     });
   </script>
 </body>
