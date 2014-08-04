@@ -73,8 +73,8 @@
     </ul>
 
     <nav class="slides-navigation" ng-show="presenterMode">
-      <a href="#" class="next">Next</a>
-      <a href="#" class="prev">Previous</a>
+      <a href="#" class="next" ng-click="nextSlide()">Next</a>
+      <a href="#" class="prev" ng-click="prevSlide()">Previous</a>
     </nav>
   </div>
 
@@ -113,12 +113,24 @@
         gotoSlide($scope.data.slide); 
       });
 
+      // Anytime the data changes, go to the current slide
       syncedSlidesIndex.$watch(function() {
         if($scope.data) {
           gotoSlide($scope.data.slide);
         }
       });
 
+      $scope.nextSlide = function(){
+        if($scope.presenterMode && $scope.data.slide + 1 < slideCount){
+          $scope.data.slide = $('#slides').superslides('current') + 1;
+        }
+      }
+
+      $scope.prevSlide = function(){
+        if($scope.presenterMode && $scope.data.slide - 1 >= 0){
+          $scope.data.slide = $('#slides').superslides('current') - 1;
+        }
+      }
 
     });
   </script>
