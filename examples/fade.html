@@ -85,8 +85,15 @@
     //Declare the angular module
     var app = angular.module('slides', []);
 
-    app.controller('MainCtrl', function() {
-      alert("Angular is working.");
+    app.controller('MainCtrl', function($scope) {
+      var slideCount = $('#slides').superslides('size');
+
+      $scope.currentSlide = 3; //TODO: Pull this from Fire
+
+      //set the currentSlide
+      if($scope.currentSlide > 0 && $scope.currentSlide < slideCount){
+        $('#slides').superslides('animate', $scope.currentSlide);
+      }
     });
   </script>
 </body>
