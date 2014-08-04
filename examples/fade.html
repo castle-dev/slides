@@ -103,13 +103,15 @@
       var syncedSlidesIndex = $firebase(ref).$asObject();
       var slideCount = $('#slides').superslides('size');
       var gotoSlide = function(slide) {
-        if(slide >= 0 && slide < slideCount){
+        if(slide >= 0 && slide < slideCount){ // 0 indexed
           $('#slides').superslides('animate', slide);
         }
       }
 
       // Setup 3 way data binding between Firebase and angular
-      syncedSlidesIndex.$bindTo($scope, "data");
+      syncedSlidesIndex.$bindTo($scope, "data").then(function() {
+        gotoSlide($scope.data.slide); 
+      });
 
       syncedSlidesIndex.$watch(function() {
         if($scope.data) {
