@@ -39,6 +39,7 @@
       background: rgba(0,0,0,.4);
       padding: 10px;
       font-size: 1.64058em; 
+      font-style: italic;
     }
     .container ul {
       list-style-type: disc;
@@ -49,6 +50,10 @@
       background: rgba(0,0,0,.4);
       position: relative;
       left: -20px;
+      font-style: italic;
+    }
+    .container a {
+      color: white;
     }
     /* Mobile-specific styling */
     @media screen and (max-width : 768px) {
@@ -57,13 +62,14 @@
         top: 0;
         width: 80%;
       }
-
-      h1 {
+      .container h1 {
         font-size: 2.64058em;
       }
-
-      p {
+      .container p {
         font-size: 1.1em;
+      }
+      .container ul {
+        font-size: 2.0em;
       }
     }
 
@@ -90,7 +96,7 @@
         <img src="images/surly.jpeg" width="1024" height="682" alt="Surly">
         <div class="container">
           <h1>Paragraph example</h1>
-          <p>Lorem ipsum dolor sit amet, atqui oporteat intellegebat ei cum, sed ut verear dolorum, dolore ubique evertitur mea et. Dissentias necessitatibus nam in. Et fugit nostrum definitionem usu, brute torquatos ius ut. Ne his brute sensibus posidonium, has et iusto semper mnesarchum. Ex usu partem laboramus signiferumque.</p>
+          <p>Lorem ipsum <a href="//entercastle.com"/>dolor</a> sit amet, atqui oporteat intellegebat ei cum, sed ut verear dolorum, dolore ubique evertitur mea et. Dissentias necessitatibus nam in. Et fugit nostrum definitionem usu, brute torquatos ius ut. Ne his brute sensibus posidonium, has et iusto semper mnesarchum. Ex usu partem laboramus signiferumque.</p>
         </div>
       </li>
       <li>
@@ -99,7 +105,7 @@
           <h1>List example</h1>
           <ul>
             <li>Squirtle</li>
-            <li>Bulbasaur</li>
+            <li><a href="//entercastle.com"/>Bulbasaur</a></li>
             <li>Charmander</li>
           </ul>
         </div>
