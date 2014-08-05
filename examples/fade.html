@@ -26,7 +26,7 @@
       padding: 10px 20px;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
-    h1 {
+    .container h1 {
       font-weight: normal;
       font-weight: 300;
       color: white;
@@ -34,11 +34,21 @@
       margin: 30px 0; 
       font-size: 3.64058em;
     }
-    p {
+    .container p {
       color: white;
       background: rgba(0,0,0,.4);
       padding: 10px;
       font-size: 1.64058em; 
+    }
+    .container ul {
+      list-style-type: disc;
+      font-size: 2.64058em; 
+    }
+    .container ul li {
+      color: white;
+      background: rgba(0,0,0,.4);
+      position: relative;
+      left: -20px;
     }
     /* Mobile-specific styling */
     @media screen and (max-width : 768px) {
@@ -86,7 +96,12 @@
       <li>
         <img src="images/cinelli-front.jpeg" width="1024" height="683" alt="Cinelli">
         <div class="container">
-          <h1>Slide three</h1>
+          <h1>List example</h1>
+          <ul>
+            <li>Squirtle</li>
+            <li>Bulbasaur</li>
+            <li>Charmander</li>
+          </ul>
         </div>
       </li>
       <li>
