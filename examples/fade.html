@@ -143,7 +143,7 @@
       var syncedSlidesIndex = $firebase(ref).$asObject();
       var slideCount = $('#slides').superslides('size');
       var gotoSlide = function(slide) {
-        if(slide >= 0 && slide < slideCount){ // 0 indexed
+        if(slide >= 0 && slide < slideCount && slide !== $('#slides').superslides('current')){
           $('#slides').superslides('animate', slide);
         }
       }
