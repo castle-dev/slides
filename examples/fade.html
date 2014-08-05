@@ -6,6 +6,9 @@
   <title>slides</title>
   <link rel="stylesheet" href="../dist/stylesheets/superslides.css">
   <style>
+    * {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
     .slides-navigation a {
       width: 150px;
       position: fixed !important;
@@ -17,6 +20,16 @@
     } .slides-navigation a.next {
       right: 0;
     }
+    footer {
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      color: white;
+      background: black;
+      z-index: 10;
+      font-size: 1.2em;
+      padding: 5px 20px;
+    }
     .container {
       position: relative;
       width: 50%;
@@ -24,7 +37,6 @@
       left: 90px;
       top: 13%;
       padding: 10px 20px;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     }
     .container h1 {
       font-weight: normal;
@@ -52,7 +64,7 @@
       left: -20px;
       font-style: italic;
     }
-    .container a {
+    a {
       color: white;
     }
     /* Mobile-specific styling */
@@ -122,6 +134,10 @@
       <a href="#" class="next" ng-click="nextSlide()">Next</a>
       <a href="#" class="prev" ng-click="prevSlide()">Previous</a>
     </nav>
+
+    <footer ng-show="presenterMode">
+      Follow along <a href="//castledevteam.github.io/slides/examples/fade.html">here</a>
+    </footer>
   </div>
 
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
