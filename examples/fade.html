@@ -124,12 +124,16 @@
       $scope.nextSlide = function(){
         if($scope.presenterMode && $scope.data.slide + 1 < slideCount){
           $scope.data.slide = $('#slides').superslides('current') + 1;
+        } else if($scope.presenterMode && $scope.data.slide + 1 === slideCount){
+          $scope.data.slide = 0; //Return to the first slide
         }
       }
 
       $scope.prevSlide = function(){
         if($scope.presenterMode && $scope.data.slide - 1 >= 0){
           $scope.data.slide = $('#slides').superslides('current') - 1;
+        } else if($scope.presenterMode && $scope.data.slide === 0){
+          $scope.data.slide = slideCount - 1;
         }
       }
 
