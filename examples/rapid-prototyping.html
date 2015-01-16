@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>slides</title>
+  <link rel="stylesheet" href="../dist/stylesheets/superslides.css">
+  <style>
+    * {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .slides-navigation a {
+      width: 150px;
+      position: fixed !important;
+      top: 0;
+      bottom: 0;
+      color: transparent;
+    } .slides-navigation a.prev {
+      left: 0;
+    } .slides-navigation a.next {
+      right: 0;
+    }
+    footer {
+      position: fixed;
+      bottom: 0px;
+      right: 0px;
+      color: white;
+      background: black;
+      z-index: 10;
+      font-size: 1.2em;
+      padding: 5px 20px;
+    }
+    .slides-container li {
+      background-color: black; 
+    }
+    .slides-container li.bright {
+      background-color: white; 
+    }
+    .container {
+      position: relative;
+      width: 50%;
+      max-width: 500px;
+      left: 90px;
+      top: 13%;
+      padding: 10px 20px;
+    }
+    .container h1 {
+      font-weight: normal;
+      font-weight: 300;
+      color: white;
+      text-shadow: 0 1px 1px #000;
+      margin: 30px 0; 
+      font-size: 3.64058em;
+    }
+    .container p {
+      color: white;
+      background: rgba(0,0,0,.4);
+      padding: 10px;
+      font-size: 1.64058em; 
+      font-style: italic;
+    }
+    .container ul {
+      list-style-type: disc;
+      font-size: 2.64058em; 
+    }
+    .container ul li {
+      color: white;
+      background: rgba(0,0,0,.4);
+      position: relative;
+      left: -20px;
+      font-style: italic;
+    }
+    a {
+      color: white;
+    }
+    /* Mobile-specific styling */
+    @media screen and (max-width : 768px) {
+      .container {
+        left: 10%;
+        top: 0;
+        width: 80%;
+      }
+      .container h1 {
+        font-size: 2.64058em;
+      }
+      .container p {
+        font-size: 1.1em;
+      }
+      .container ul {
+        font-size: 2.0em;
+      }
+    }
+
+  </style>
+  <!-- AngularJS -->
+  <script src="../node_modules/angular/lib/angular.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.1.1/firebase.js"></script>
+
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/0.8.0/angularfire.min.js"></script>
+</head>
+<body ng-app="slides">
+  <div id="slides" ng-controller="MainCtrl">
+    <div ng-show="showLogin">
+      <h1>sup</h1>
+      <form ng-submit="login()">
+        <input type="text" ng-model="user.email">
+        <input type="password" ng-model="user.password">
+        <button>Login</button>
+      </form>
+    </div>
+    <ul class="slides-container">
+      <li>
+        <div class="container">
+          <h1>Tech Talk</h1>
+          <p>Life Hacking</p>
+        </div>
+      </li>
+      <li>
+        <img src="images/vfa.jpg" alt="Venture For America">
+        <div class="container">
+          <h1>Venture For America</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/rebirth.jpg" alt="Rebirth Realty">
+        <div class="container">
+          <h1>Rebirth Realty</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/castle.png" alt="Castle">
+        <div class="container">
+          <h1>Castle</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/hack.jpg" alt="Despise for Hacking">
+        <div class="container">
+          <h1>"Hacking"</h1>
+          <p>I despise the word.</p>
+        </div>
+      </li>
+      <li>
+        <img src="images/life-hacking.jpg" alt="Life Hacking">
+        <div class="container">
+          <h1>Life Hacking</h1>
+          <p>"any productivity trick, shortcut, skill, or novelty method to increase productivity and efficiency, in all walks of life"</p>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <h1>Extreme Examples</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/kurzweil.jpg" alt="Ray Kurzweil">
+        <div class="container">
+          <h1>Ray Kurzweil</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/sleep.jpg" alt="Polyphasic Sleep">
+        <div class="container">
+          <h1>Polyphasic Sleep</h1>
+        </div>
+      </li>
+      <li class="bright">
+        <img src="images/modafinil.svg" alt="Modafinil">
+        <div class="container">
+          <h1>Modafinil</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/wall-street.jpg" alt="Wall Street">
+        <div class="container">
+          <h1>Modafinil</h1>
+          <p>Wall Street's drug of choice</p>
+        </div>
+      </li>
+      <li>
+        <img src="images/magnetic-implant.jpg" alt="Magnetic Implant">
+        <div class="container">
+          <h1>Magnetic Implants</h1>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <h1>Practical Examples</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/fruit-flies.jpg" alt="Fruit Fly Massacre">
+        <div class="container">
+          <h1>Fruit Fly Massacre</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/deviled-eggs.jpg" alt="Lazy Deviled Eggs">
+        <div class="container">
+          <h1>Lazy Deviled Eggs</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/reddit.jpg" alt="/r/LifeProTips">
+        <div class="container">
+          <h1>/r/LifeProTips</h1>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <h1>Keyboard Shortcuts</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/vim.png" alt="Vim">
+        <div class="container">
+          <h1>Vim</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/excel.jpg" alt="Excel">
+        <div class="container">
+          <h1>Excel</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/internet.jpg" alt="Internet">
+        <div class="container">
+          <h1>The Internet</h1>
+        </div>
+      </li>
+      <li>
+        <img src="images/windows.jpg" alt="Windows">
+        <div class="container">
+          <h1>Managing Windows</h1>
+          <p>
+            Open new window = ctrl + n<br/><br/>
+            Previous window = alt + tab<br/><br/>
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="images/tabs.jpg" alt="Tabs">
+        <div class="container">
+          <h1>Managing Tabs</h1>
+          <p>
+            Open new tab = ctrl + t<br/><br/>
+            Close current tab = ctrl + w<br/><br/>
+            Next tab = ctrl + tab<br/><br/>
+            Previous tab = ctrl + shift + tab<br/><br/>
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="images/navigation.jpg" alt="Compass">
+        <div class="container">
+          <h1>Navigation</h1>
+          <p>
+            Scroll down = space<br/><br/>
+            Scroll up = shift + space<br/><br/>
+            Go back = alt + left<br/><br/>
+            Go forward = alt + right<br/><br/>
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="images/data.jpg" alt="Data">
+        <div class="container">
+          <h1>Entering Data</h1>
+          <p>
+            Jump to next input = tab<br/><br/>
+            Jump to previous input = shift + tab<br/><br/>
+            Jump cursor by word = ctrl + left/right<br/><br/>
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="images/scissors-and-glue.jpg" alt="Scissors and Glue">
+        <div class="container">
+          <h1>Manipulating Text</h1>
+          <p>
+            Cut = ctrl + x<br/><br/>
+            Copy = ctrl + c<br/><br/>
+            Paste = ctrl + v<br/><br/>
+            Paste without formatting = ctrl + shift + v<br/><br/>
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="images/google.jpg" alt="Google">
+        <div class="container">
+          <h1>Googling</h1>
+          <p>
+            Focus address bar = ctrl + l<br/><br/>
+            Search from the address bar<br/><br/>
+            Use tab and arrows to select results<br/><br/>
+            Start with "define:" to get definitions<br/><br/>
+          </p>
+        </div>
+      </li>
+      <li>
+        <img src="images/scott.jpg" alt="Scott">
+        <div class="container">
+          <h1>Stay in touch</h1>
+          <ul>
+            <li>Feedback is a gift</li>
+            <li><a href="//scottdlowe.com">scottdlowe.com</a></li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <div class="container">
+          <h1>Thanks!</h1>
+        </div>
+      </li>
+    </ul>
+
+    <nav class="slides-navigation" ng-show="presenterMode">
+      <a href="#" class="next" ng-click="nextSlide()">Next</a>
+      <a href="#" class="prev" ng-click="prevSlide()">Previous</a>
+    </nav>
+
+  </div>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="javascripts/jquery.easing.1.3.js"></script>
+  <script src="javascripts/jquery.animate-enhanced.min.js"></script>
+  <script src="../dist/jquery.superslides.js" type="text/javascript" charset="utf-8"></script>
+  <script>
+    //Activate the superslides plugin
+    $('#slides').superslides({
+      animation: 'fade',
+      pagination: false
+    });
+
+    //Declare the angular module
+    var app = angular.module('slides', ["firebase"]);
+
+    app.config(function($locationProvider) {
+      $locationProvider.html5Mode(true);
+    });
+
+    app.controller('MainCtrl', function($scope, $location, $firebase) {
+
+      $scope.presenterMode = false;
+      $scope.showLogin = $location.search().presenter;
+      var ref = new Firebase('https://radiant-fire-5789.firebaseio.com/');
+      var syncedSlidesIndex = $firebase(ref).$asObject();
+      var slideCount = $('#slides').superslides('size');
+      var gotoSlide = function(slide) {
+        if(slide >= 0 && slide < slideCount && slide !== $('#slides').superslides('current')){
+          $('#slides').superslides('animate', slide);
+        }
+      }
+
+      $scope.login = function () {
+        ref.authWithPassword($scope.user, function (err) {
+          if (!err) {
+            $scope.presenterMode = true;
+            $scope.showLogin = false;
+            $scope.$digest();
+          }
+        });
+      }
+
+      // Setup 3 way data binding between Firebase and angular
+      syncedSlidesIndex.$bindTo($scope, "data").then(function() {
+        gotoSlide($scope.data.slide); 
+      });
+
+      // Anytime the data changes, go to the current slide
+      syncedSlidesIndex.$watch(function() {
+        if($scope.data) {
+          gotoSlide($scope.data.slide);
+        }
+      });
+
+      $scope.nextSlide = function(){
+        if($scope.presenterMode && $scope.data.slide + 1 < slideCount){
+          $scope.data.slide = $('#slides').superslides('current') + 1;
+        } else if($scope.presenterMode && $scope.data.slide + 1 === slideCount){
+          $scope.data.slide = 0; //Return to the first slide
+        }
+      }
+
+      $scope.prevSlide = function(){
+        if($scope.presenterMode && $scope.data.slide - 1 >= 0){
+          $scope.data.slide = $('#slides').superslides('current') - 1;
+        } else if($scope.presenterMode && $scope.data.slide === 0){
+          $scope.data.slide = slideCount - 1;
+        }
+      }
+
+    });
+  </script>
+</body>
+</html>
